@@ -1,0 +1,45 @@
+#filee
+{
+	float:right;
+}
+
+h3
+{
+	text-align:center;
+	font-family:sans-serif;
+	font-weight:bold;
+}
+
+.err{
+    margin-left: 20px;
+    display: block;
+    font-size: 20px;
+    color: red;
+}
+.err1{
+    margin-left: 20px;
+    display: block;
+    font-size: 20px;
+    color:blue;  
+}
+
+.heading
+{
+	
+	font-size: 20px;
+	float:right;
+    background-color:lightcyan;
+	/* border: 1px solid; */
+}
+#partone
+{	
+	border-bottom: 3px solid black;
+}
+#bx{
+    padding-left:30px;
+	padding-right:30px;
+}
+#bx1{
+	padding-left:40px;
+	/* padding-right:35px; */
+}

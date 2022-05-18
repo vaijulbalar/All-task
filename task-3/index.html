@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>working with storage</title>
+    <script src="index1.js"></script>
+    <style>
+        
+        #success_message {
+            display: none;
+        }
+        .container{
+            margin-top: 30px;
+        }
+        .des{
+            display: block;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <form class="well form-horizontal"  id="contact_form" >
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>
+                    <center>
+                        <h2><b>Employee Details</b></h2>
+                    </center>
+                </legend><br>
+
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input name="first_name" id="nm" placeholder="Name" class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">E-Mail</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input name="email" placeholder="E-Mail Address" class="form-control" id="em"  type=" text">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Contact No.</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            <input name="contact_no" placeholder="(91)" class="form-control" id="mn" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Country</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                            <input name="country" value="india" class="form-control"   type=" text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">State</label>
+                    <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                            <select name="state" id="st" onchange="select()" class="form-control selectpicker">
+                                <option value="/">Select state</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">City</label>
+                    <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                            <select name="city" id="ct" class="form-control selectpicker">
+                                <option value="/">select city</option>
+                                <option value="c1"></option>
+                                <option value="c2"></option>
+                                <option value="c3"></option>
+                                <option value="c4"></option>
+                                <option value="c5"></option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Address</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon"></i></span>
+                            <textarea class="form-control" cols="25" rows="3" id="add"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                
+
+                <!-- Button -->
+                <div class="form-group" >
+                    <label class="col-md-4 control-label"></label>
+                    <div  class="col-md-4">
+                        <button type="submit" class="btn btn-warning" onclick="return myform()">&nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT
+                            <span
+                                class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>&nbsp&nbsp&nbsp&nbsp
+                            
+                         <button type="btn" class="btn btn-warning" onclick="return fetch()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSEARCH
+                             <span
+                                 class="glyphicon glyphicon-search"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        </div></div>
+
+                        <!-- <div class="form-group" >
+                            <label class="col-md-4 control-label"></label>
+                            <div  class="col-md-4">
+                               
+        
+                                 <button type="btn" class="btn btn-warning" onclick="return fetch()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSEARCH
+                                     <span
+                                         class="glyphicon glyphicon-search"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                                </div></div> -->
+
+                        
+                    
+                   </form>     
+                        <div style="margin-top: 50px;">
+                            <a href="#nm" id="nm1" class="des"></a>
+                            <a href="#em" id="em1" class="des"></a>
+                            <a href="#mn" id="mn1" class="des"></a>
+                            <a href="#st" id="st1" class="des"></a>
+                            <a href="#ct" id="ct1" class="des"></a>
+                            <a href="#add" id="add1" class="des"></a></div>
+                  </fieldset>   
+                    
+
+            
+        
+    </div>
+    
+    
+    </div><!-- /.container -->
+
+</body>
+
+</html>

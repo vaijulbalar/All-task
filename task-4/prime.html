@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prime number</title>
+
+    <style>
+        table {
+            margin: 50px;
+            background-color: rgb(145, 207, 207);
+            font-size: 20px;
+        }
+    </style>
+
+    <script>
+        function Prime() {
+            let input = document.getElementById('user').value;
+            let number = parseInt(input);
+            let Result = document.getElementById('sre');
+            let num1 = /^[0-9]+$/;
+            let isValid = num1.test(input);
+            if (input == "") {
+                document.getElementById('err').innerText = "please enter number";
+            }
+            else if(!isValid){
+                document.getElementById('err').innerText = "please enter valid number";
+            } 
+            else if(input<2){
+                document.getElementById('err').innerText = "please enter valid number";
+            } 
+            else if(document.querySelector('input[name="ch"]:checked') == null) {
+                document.getElementById('err').innerText = "please select any one";
+            }
+            else {
+                document.getElementById('err').innerText = "";
+
+                // 1.prime number using simple function................         
+                if (document.getElementById('p1').checked == true) {
+                    function prime() {
+                        let number = parseInt(input);
+                        let isPrime = true;
+                        for (let i = 2; i < number; i++) {
+                            if (number % i == 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        if (isPrime) {
+                            Result.innerHTML = (`${number} is a prime number `);
+                        }
+                        else {
+                            Result.innerHTML = (`${number} is not a prime number`);
+                        }
+                    }
+                    prime();
+                }
+
+
+                // 2.with argument no return................
+                else if (document.getElementById('p2').checked == true) {
+                    function prime(number) {
+                        let isPrime = true;
+                        for (let i = 2; i < number; i++) {
+                            if (number % i == 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        if (isPrime) {
+                            Result.innerHTML = (`${number} is a prime number `);
+                        }
+                        else {
+                            Result.innerHTML = (`${number} is not a prime number`);
+                        }
+                    }
+                    prime(number);
+                }
+
+                //         3 with argument with return
+                else if (document.getElementById('p3').checked == true) {
+                    function prime(number) {
+                        let isPrime = true;
+                        for (let i = 2; i < number; i++) {
+                            if (number % i == 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        if (isPrime) {
+                            return (`${number} is a prime number `);
+                        }
+                        else {
+                            return (`${number} is not a prime number`);
+                        }
+                    }
+                    let checkPrime = prime(number);
+                    Result.innerHTML = checkPrime;
+                }
+
+                //         4.prime number using with return no arg: 
+                else if (document.getElementById('p4').checked == true) {
+                    function prime() {
+                        let isPrime = true;
+                        for (let i = 2; i < number; i++) {
+                            if (number % i == 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        if (isPrime) {
+                            return (`${number} is a prime number `);
+                        }
+                        else {
+                            return (`${number} is not a prime number`);
+                        }
+                    }
+                    let checkPrime = prime();
+                    Result.innerHTML = checkPrime;
+                }
+
+                //  5.prime number using function expression: 
+                else if (document.getElementById('p5').checked == true) {
+                    let checkPrime = function () {
+                        let isPrime = true;
+                        for (let i = 2; i < number; i++) {
+                            if (number % i == 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        if (isPrime) {
+                            return (`${number} is a prime number `);
+                        }
+                        else {
+                            return (`${number} is not a prime number`);
+                        }
+                    }
+
+
+                    Result.innerHTML = checkPrime();
+                }
+
+                // 6.prime number using Arrow function: 
+                else if (document.getElementById('p6').checked == true) {
+                    let checkPrime = () => {
+                        let isPrime = true;
+                        for (let i = 2; i < number; i++) {
+                            if (number % i == 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        if (isPrime) {
+                            return (`${number} is a prime number `);
+                        }
+                        else {
+                            return (`${number} is not a prime number`);
+                        }
+                    }
+                    Result.innerHTML = checkPrime();
+                }
+
+                // 7. prime number using callback function:
+                else if (document.getElementById('p7').checked == true) {
+                function prime(value,isPrime,isnotPrime){
+                    check(value) ? isPrime() : isnotPrime();
+                }
+                function isPrime(){
+                    Result.innerHTML = (`${number} is a prime number `);
+                }
+                function isnotPrime(){
+                    Result.innerHTML = (`${number} is not a prime number `);
+                }
+
+                function check(n){
+                   let count=0;
+                   for(let i=2; i<n; i++){
+                       if(n % i == 0) count++
+                   } 
+                   if(count<1) return true 
+                   else return false
+
+                } 
+                prime(number,isPrime,isnotPrime);}
+
+                //8.using promise...........
+                else if (document.getElementById('p8').checked == true) {
+                    
+                    let promise = new Promise(function(resolve,reject){
+                        let isPrime = true;
+                        for (let i = 2; i < number; i++) {
+                            if (number % i == 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        if (isPrime)
+                            resolve();
+                        else
+                            reject();    
+                    })
+                    promise.then(function(){
+                        Result.innerHTML = (`${number} is a prime number `);
+                    }).catch(function(){
+                        Result.innerHTML = (`${number} is not a prime number `);
+                    })
+
+                }
+            }
+        }
+    </script>
+
+
+
+</head>
+
+
+<body>
+    <h1><b><u>Check Weather Num Is Prime or Not:</u></b></h1>
+    <table border="1px solid" rules="all">
+        <tr>
+            <td><b>Enter number:</b></td>
+            <td><input type="text" id="user"></td>
+        </tr>
+        <tr>
+            <td><b>Using no arg no return:</b></td>
+            <td><input type="radio" name="ch" id="p1"></td>
+        </tr>
+        <tr>
+            <td><b>Using with arg no return:</b></td>
+            <td><input type="radio" name="ch" id="p2"></td>
+        </tr>
+        <tr>
+            <td><b>Using with arg with return:</b></td>
+            <td><input type="radio" name="ch" id="p3"></td>
+        </tr>
+        <tr>
+            <td><b>Using no arg with return:</b></td>
+            <td><input type="radio" name="ch" id="p4"></td>
+        </tr>
+        <tr>
+            <td><b>Using function expression:</b></td>
+            <td><input type="radio" name="ch" id="p5"></td>
+        </tr>
+        <tr>
+            <td><b>Using arrow function:</b></td>
+            <td><input type="radio" name="ch" id="p6"></td>
+        </tr>
+        <tr>
+            <td><b>Using callback function:</b></td>
+            <td><input type="radio" name="ch" id="p7"></td>
+        </tr>
+        <tr>
+            <td><b>Using promise:</b></td>
+            <td><input type="radio" name="ch" id="p8"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="show result" id="res" onclick="Prime()"></td>
+            <td><span id="sre"></span></td>
+        </tr>
+    </table>
+    <div style="margin-top:-40px; margin-left: 51px;"><span id="err"
+            style="color: red; font-size: 20px; margin-top: 10px;"></span>
+    </div>
+</body>
+
+</html>

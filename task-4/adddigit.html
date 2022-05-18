@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add digit</title>
+    <script>
+        function Adddigit() {
+            let input = document.getElementById('user').value;
+            let num = parseInt(input);
+            let Result = document.getElementById('sre');
+            let num1 = /^[0-9]+$/;
+            let isValid = num1.test(input);
+            if (input == "") {
+                document.getElementById('err').innerText = "please enter number"
+            }
+            else if(!isValid){
+                document.getElementById('err').innerText = "please enter valid number";
+            }
+            else if(document.querySelector('input[name="ch"]:checked') == null) {
+                document.getElementById('err').innerText = "please select any one";
+            }
+            else {
+                document.getElementById('err').innerText = "";
+                //1.Adding num with no arg no return:...................
+                if (document.getElementById('p1').checked == true) {
+                    function Add() {
+                        let sum = 0, rem;
+                        while (num > 0) {
+                            rem = num % 10;
+                            sum += rem;
+                            num = parseInt(num / 10);
+                        }
+                        Result.innerHTML = (` The sum is ${sum}`);
+                    }
+                    Add();
+                }
+
+                //2 Adding num with arg no return:......................
+                else if (document.getElementById('p2').checked == true) {
+                    function Add(num) {
+                        let sum = 0, rem;
+                        while (num > 0) {
+                            rem = num % 10;
+                            sum += rem;
+                            num = parseInt(num / 10);
+                        }
+                        Result.innerHTML = (` The sum is ${sum}`);
+                    }
+                    Add(num);
+                }
+
+                //3 Adding num with arg with return:............................
+                else if (document.getElementById('p3').checked == true) {
+                    function Add(num) {
+                        let sum = 0, rem;
+                        while (num > 0) {
+                            rem = num % 10;
+                            sum += rem;
+                            num = parseInt(num / 10);
+                        }
+                        return (` The sum is ${sum}`)
+                    }
+                    const checksum = Add(num);
+                    Result.innerHTML = checksum;
+                }
+
+                //4. Adding num with no arg with return:............................
+                else if (document.getElementById('p4').checked == true) {
+                    function Add() {
+                        let sum = 0, rem;
+                        while (num > 0) {
+                            rem = num % 10;
+                            sum += rem;
+                            num = parseInt(num / 10);
+                        }
+                        return (` The sum is ${sum}`)
+                    }
+                    const checksum = Add();
+                    Result.innerHTML = checksum;
+                }
+
+                //5. Adding num with function expressiopn:............................
+                else if (document.getElementById('p5').checked == true) {
+                    const checksum = function () {
+                        let sum = 0, rem;
+
+                        while (num > 0) {
+                            rem = num % 10;
+                            sum += rem;
+                            num = parseInt(num / 10);
+                        }
+                        return (` The sum is ${sum}`)
+                    }
+                    Result.innerHTML = checksum();
+                }
+
+
+                //6 Adding num with arrow function:............................
+                else if (document.getElementById('p6').checked == true) {
+                    const checksum = () => {
+                        let sum = 0, rem;
+                        while (num > 0) {
+                            rem = num % 10;
+                            sum += rem;
+                            num = parseInt(num / 10);
+                        }
+                        return (` The sum is ${sum}`)
+                    }
+                    Result.innerHTML = checksum();
+                }
+
+                //7. Adding num using calllback function:...........
+                else if (document.getElementById('p7').checked == true) { 
+                    let result = (sum) => {Result.innerHTML = `The sum is ${sum}`}
+                    function Add() {
+                        let sum = 0, rem;
+                        while (num > 0) {
+                            rem = num % 10;
+                            sum += rem;
+                            num = parseInt(num / 10);
+                        }
+                        result(sum);
+                    }                    
+                    Add();
+                }
+
+                
+
+                //8.using promise...........
+                else if (document.getElementById('p8').checked == true) {
+                let sum = 0, rem;
+                    let promise = new Promise(function (resolve) {
+                        
+                        while (num > 0) {
+                            rem = num % 10;
+                            sum += rem;
+                            num = parseInt(num / 10);
+                        }
+                        resolve();
+                    })
+                    promise.then(function () {
+                        Result.innerHTML = (`The sum is ${sum} `);
+                    })
+
+                }
+            }
+        }
+
+    </script>
+
+    <style>
+        table {
+            background-color: rgb(132, 180, 235);
+            margin: 35px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><b><u>Adding a Digit of num</u></b></h1>
+    <table border="1px solid" rules="all">
+        <tr>
+            <td><b>Enter number:</b></td>
+            <td><input type="text" id="user"></td>
+        </tr>
+        <tr>
+            <td><b>Using no arg no return:</b></td>
+            <td><input type="radio" name="ch" id="p1"></td>
+        </tr>
+        <tr>
+            <td><b>Using with arg no return:</b></td>
+            <td><input type="radio" name="ch" id="p2"></td>
+        </tr>
+        <tr>
+            <td><b>Using with arg with return:</b></td>
+            <td><input type="radio" name="ch" id="p3"></td>
+        </tr>
+        <tr>
+            <td><b>Using no arg with return:</b></td>
+            <td><input type="radio" name="ch" id="p4"></td>
+        </tr>
+        <tr>
+            <td><b>Using function expression:</b></td>
+            <td><input type="radio" name="ch" id="p5"></td>
+        </tr>
+        <tr>
+            <td><b>Using arrow function:</b></td>
+            <td><input type="radio" name="ch" id="p6"></td>
+        </tr>
+        <tr>
+            <td><b>Using callback function:</b></td>
+            <td><input type="radio" name="ch" id="p7"></td>
+        </tr>
+        <tr>
+            <td><b>Using promise:</b></td>
+            <td><input type="radio" name="ch" id="p8"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="show result" id="res" onclick="Adddigit()"></td>
+            <td><span id="sre"></span></td>
+        </tr>
+    </table>
+    <div style="margin-top:-30px; margin-left: 51px;"><span id="err"
+            style="color: red; font-size: 20px; margin-top: 10px;"></span>
+    </div>
+
+</body>
+
+</html>
